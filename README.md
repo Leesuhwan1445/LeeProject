@@ -1,6 +1,6 @@
 # Lee Project
 
-Node.js + Express + React(TypeScript) + PostgreSQL 풀스택 프로젝트입니다.
+Node.js + Express + React(TypeScript) + PostgreSQL 을 이용해서 간단한 투두리스트를 만들어봤습니다.
 
 ## 구조
 
