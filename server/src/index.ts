@@ -1,28 +1,12 @@
-import express from "express";
-import cors from "cors";
-import { config } from "./config/env.js";
-import { getPool } from "./config/database.js";
+import {pool} from "./config/database";
 
-const app = express();
-const PORT = config.port;
-
-app.use(cors());
-app.use(express.json());
-
-app.get("/api/health", (_req, res) => {
-  res.json({ status: "ok", timestamp: new Date().toISOString() });
-});
-
-app.get("/api/db-check", async (_req, res) => {
+async function testDB() {
   try {
-    const pool = getPool();
-    const result = await pool.query("SELECT NOW() as now");
-    res.json({ db: "connected", serverTime: result.rows[0].now });
-  } catch (err) {
-    res.status(500).json({ db: "error", message: (err as Error).message });
+    const res = await pool.query("SELECT NOW()")
+    console.log("DB 연결 성공:", res.rows);
+  }catch (error){
+    console.error("DB 연결 실패:", error);
   }
-});
+}
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+testDB();

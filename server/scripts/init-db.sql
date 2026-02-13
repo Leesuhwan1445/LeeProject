@@ -9,3 +9,5 @@
 -- );
 
 SELECT 'DB init script ready.' AS status;
+
+
