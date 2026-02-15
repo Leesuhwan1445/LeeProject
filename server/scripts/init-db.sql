@@ -1,13 +1,6 @@
--- Lee Project 초기 DB (필요 시 실행)
--- psql -U postgres -d lee_project -f server/scripts/init-db.sql
-
--- 예: 테이블 생성
--- CREATE TABLE IF NOT EXISTS users (
---   id SERIAL PRIMARY KEY,
---   name VARCHAR(255) NOT NULL,
---   created_at TIMESTAMPTZ DEFAULT NOW()
--- );
-
-SELECT 'DB init script ready.' AS status;
-
-
+create table todos (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) not null,
+    completed boolean not null default false,
+    created_at timestamp not null default current_timestamp
+);
