@@ -1,7 +1,13 @@
+import { Routes, Route } from 'react-router-dom';
+import TodoPages from './pages/TodoPages';
+
 const App = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-2xl font-semibold text-gray-800">Lee Project</h1>
+    <div className="min-h-screen bg-gray-100">
+      <Routes>
+        <Route path="/" element={<TodoPages />} />
+        <Route path="/todos" element={<TodoPages />} />
+      </Routes>
     </div>
   );
 };
